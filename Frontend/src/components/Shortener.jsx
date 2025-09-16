@@ -77,7 +77,7 @@ export default function Shortener() {
                       rel="noreferrer"
                       className="text-white underline mr-3 hover:text-gray-300"
                     >
-                      https://tinyurl-rp1q.onrender.com/r/{item.shortCode}
+                      {item.shortCode}
                     </a>
                     <button
                       onClick={() => handleCopy(item.shortCode)}
