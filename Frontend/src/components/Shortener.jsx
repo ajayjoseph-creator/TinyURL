@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaGithub } from "react-icons/fa"; // GitHub icon
 
 export default function Shortener() {
   const [longUrl, setLongUrl] = useState("");
@@ -19,34 +20,47 @@ export default function Shortener() {
 
       setHistory([{ longUrl, shortCode }, ...history]);
       setLongUrl("");
+      toast.success("URL Shortened!");
     } catch (err) {
       console.error(err);
       if (err.response) setError(err.response.data.msg || "Error generating short URL");
       else setError(err.message || "Server error");
     } finally {
       setLoading(false);
-      toast.success('URL Shortened')
     }
   };
 
- const handleCopy = (shortCode) => {
-  const url = `https://tinyurl-rp1q.onrender.com/r/${shortCode}`;
-  navigator.clipboard.writeText(url);
-  toast.success("Copied to clipboard!");
-};
+  const handleCopy = (shortCode) => {
+    const url = `https://tinyurl-rp1q.onrender.com/r/${shortCode}`;
+    navigator.clipboard.writeText(url);
+    toast.success("Copied to clipboard!");
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black relative">
       
+      <div className="absolute top-4 left-4">
   <img 
     src="/URL.png" 
     alt="App Logo" 
-    className="w-40 h-40 rounded-full shadow-md"
+    className="w-8 h-8 shadow-md"
   />
-  
+</div>
+
+<div className="absolute top-4 right-4">
+  <a
+    href="https://github.com/ajayjoseph-creator" 
+    target="_blank"
+    rel="noreferrer"
+    className="text-white text-3xl hover:text-gray-400 transition"
+  >
+    <FaGithub />
+  </a>
+</div>
+
       <div className="bg-black border border-gray-700 shadow-xl rounded-2xl p-8 w-full max-w-2xl">
         <h1 className="text-3xl font-bold text-center text-white mb-6">
-        URL Shortener
+          URL Shortener
         </h1>
 
         <div className="flex w-full mb-4">
