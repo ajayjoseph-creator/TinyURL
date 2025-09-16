@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export default function Shortener() {
   const [longUrl, setLongUrl] = useState("");
@@ -24,17 +25,25 @@ export default function Shortener() {
       else setError(err.message || "Server error");
     } finally {
       setLoading(false);
+      toast.success('URL Shortened')
     }
   };
 
-  const handleCopy = (shortCode) => {
-    const url = `https://tinyurl-rp1q.onrender.com/r/${shortCode}`;
-    navigator.clipboard.writeText(url);
-    alert("Copied to clipboard!");
-  };
+ const handleCopy = (shortCode) => {
+  const url = `https://tinyurl-rp1q.onrender.com/r/${shortCode}`;
+  navigator.clipboard.writeText(url);
+  toast.success("Copied to clipboard!");
+};
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+      
+  <img 
+    src="/URL.png" 
+    alt="App Logo" 
+    className="w-40 h-40 rounded-full shadow-md"
+  />
+  
       <div className="bg-black border border-gray-700 shadow-xl rounded-2xl p-8 w-full max-w-2xl">
         <h1 className="text-3xl font-bold text-center text-white mb-6">
         URL Shortener
