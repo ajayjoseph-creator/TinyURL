@@ -13,7 +13,7 @@ export default function Shortener() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:3000/shorten", { longUrl });
+      const res = await axios.post("https://tinyurl-rp1q.onrender.com/shorten", { longUrl });
       const shortCode = res.data.shortCode;
 
       setHistory([{ longUrl, shortCode }, ...history]);
@@ -28,7 +28,7 @@ export default function Shortener() {
   };
 
   const handleCopy = (shortCode) => {
-    const url = `http://localhost:3000/r/${shortCode}`;
+    const url = `https://tinyurl-rp1q.onrender.com/r/${shortCode}`;
     navigator.clipboard.writeText(url);
     alert("Copied to clipboard!");
   };
@@ -72,12 +72,12 @@ export default function Shortener() {
                   <span className="text-gray-300 truncate">{item.longUrl}</span>
                   <div className="flex items-center mt-2 md:mt-0">
                     <a
-                      href={`http://localhost:3000/r/${item.shortCode}`}
+                      href={`https://tinyurl-rp1q.onrender.com/r/${item.shortCode}`}
                       target="_blank"
                       rel="noreferrer"
                       className="text-white underline mr-3 hover:text-gray-300"
                     >
-                      http://localhost:3000/r/{item.shortCode}
+                      https://tinyurl-rp1q.onrender.com/r/{item.shortCode}
                     </a>
                     <button
                       onClick={() => handleCopy(item.shortCode)}

@@ -12,7 +12,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "https://tiny-url-eight.vercel.app"
 }));
 app.use(bodyParser.json());
 app.use("/", urlRoutes);
