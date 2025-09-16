@@ -15,7 +15,6 @@ function App() {
         pauseOnHover 
         draggable 
         theme="light"
-        transition={Flip} 
       />
     </>
   );
