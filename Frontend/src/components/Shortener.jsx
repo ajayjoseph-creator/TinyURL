@@ -85,7 +85,7 @@ export default function Shortener() {
 
         {history.length > 0 && (
           <div className="mt-6">
-            <h2 className="text-xl font-semibold text-white mb-3">📜 History</h2>
+            <h2 className="text-xl font-semibold text-white mb-3">History</h2>
             <ul className="space-y-3">
               {history.map((item, index) => (
                 <li
